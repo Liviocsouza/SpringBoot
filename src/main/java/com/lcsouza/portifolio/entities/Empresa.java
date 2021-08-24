@@ -5,11 +5,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
+@Entity
 public class Empresa implements Serializable {
 	
 	private static final long serialVersionUID =  1L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
 	private String razaoSocial;
@@ -17,6 +24,7 @@ public class Empresa implements Serializable {
 	private Long cnpj;
 	private String cidade;
 	//@JsonIgnore
+	@OneToMany(mappedBy="empresa")
 	private List<User> users = new ArrayList<>();
 
 	public Empresa(Long id, String razaoSocial, Long cnpj) {

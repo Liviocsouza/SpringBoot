@@ -31,7 +31,7 @@ public class EmpresaResource {
 	@GetMapping(value="/{id}")
 	public ResponseEntity<Empresa> findById(@PathVariable Long id){
 		
-		Empresa empresa = empresaRepository.findById(id);
+		Empresa empresa = empresaRepository.findById(id).get();
 		return ResponseEntity.ok().body(empresa);
 	}
 	

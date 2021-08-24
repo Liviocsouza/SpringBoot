@@ -3,16 +3,31 @@ package com.lcsouza.portifolio.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import org.hibernate.annotations.GenericGenerator;
+
+@Entity
 public class User implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
+	@Id
+	@GeneratedValue(generator = "increment")
+	@GenericGenerator(name = "increment", strategy = "increment")
 	private Long id;
 	private String nome;
 	private String idade;
 	private String email;
 	//criar enum para genero
 	private String genero;
+	
+	@ManyToOne
+	@JoinColumn(name="empresa_id")
 	private Empresa empresa;
 	
 	

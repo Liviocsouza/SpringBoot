@@ -27,11 +27,11 @@ public class UserResource {
 		return ResponseEntity.ok().body(userList);
 	}
 	
-	
+
 	@GetMapping(value="/{id}")
 	public ResponseEntity<User> findById(@PathVariable Long id){
 		
-		User user = userRepository.findById(id);
+		User user = userRepository.findById(id).get();
 		return ResponseEntity.ok().body(user);
 	}
 	

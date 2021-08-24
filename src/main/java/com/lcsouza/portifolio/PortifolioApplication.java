@@ -27,13 +27,13 @@ public class PortifolioApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		Empresa unimedFort = new Empresa(1L,"Unimed Fortaleza",12341L);
-		Empresa unimedCeara = new Empresa(2L, "Unimed Ceara", 1211L);
+		Empresa unimedFort = new Empresa(null,"Unimed Fortaleza",12341L);
+		Empresa unimedCeara = new Empresa(null, "Unimed Ceara", 1211L);
 		
-		User user1 = new User(1L, "livio",unimedFort);
-		User user2 = new User(2L,"Anna",unimedCeara);
-		User user3 = new User(3L,"Bruno",unimedCeara);
-		User user4 = new User(4L,"Laura",unimedFort);
+		User user1 = new User(null, "livio",unimedFort);
+		User user2 = new User(null,"Anna",unimedCeara);
+		User user3 = new User(null,"Bruno",unimedCeara);
+		User user4 = new User(null,"Laura",unimedFort);
 		
 		unimedFort.getUsers().add(user1);
 		unimedCeara.getUsers().addAll(Arrays.asList(user2,user3));

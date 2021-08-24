@@ -1,32 +1,12 @@
 package com.lcsouza.portifolio.repositories;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.springframework.stereotype.Component;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import com.lcsouza.portifolio.entities.Empresa;
 
-@Component
-public class EmpresaRepository {
+@Repository
+public interface EmpresaRepository extends JpaRepository<Empresa, Long> {
 	
-	private Map<Long,Empresa> map = new HashMap<Long, Empresa>();
-	
-	public void save(Empresa obj) {
-		map.put(obj.getId(), obj);
-		
-	}
-	
-	public Empresa findById(Long id) {
-		
-		return map.get(id);
-	}
-	
-	public List<Empresa> findAll(){
-		return new ArrayList<Empresa>(map.values());
-		
-	}
 
 }
