@@ -9,30 +9,30 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.lcsouza.portifolio.entities.User;
-import com.lcsouza.portifolio.repositories.UserRepository;
+import com.lcsouza.portifolio.entities.Empresa;
+import com.lcsouza.portifolio.repositories.EmpresaRepository;
 
 @RestController
-@RequestMapping(value="/users")
-public class UserResource {
+@RequestMapping(value="/empresas")
+public class EmpresaResource {
 	 
 	@Autowired
-	private UserRepository userRepository;
+	private EmpresaRepository empresaRepository;
 	
 	@GetMapping
-	public ResponseEntity<List<User>> findAll(){
+	public ResponseEntity<List<Empresa>> findAll(){
 		
-		List<User> userList = userRepository.findAll();
+		List<Empresa> userList = empresaRepository.findAll();
 		
 		return ResponseEntity.ok().body(userList);
 	}
 	
 	
 	@GetMapping(value="/{id}")
-	public ResponseEntity<User> findById(@PathVariable Long id){
+	public ResponseEntity<Empresa> findById(@PathVariable Long id){
 		
-		User user = userRepository.findById(id);
-		return ResponseEntity.ok().body(user);
+		Empresa empresa = empresaRepository.findById(id);
+		return ResponseEntity.ok().body(empresa);
 	}
 	
 
