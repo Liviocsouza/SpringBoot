@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,29 +26,26 @@ public class EmpresaResource {
 	 
 	@Autowired
 	private EmpresaRepository empresaRepository;
-	
+	@CrossOrigin
 	@PostMapping
 	public Empresa adicionar(@RequestBody Empresa empresa) {
 		
 		return empresaRepository.save(empresa);
 	}
 	
-	
+	@CrossOrigin
 	@GetMapping
-	public List<Empresa> findAll(){
-		
-		
-		return empresaRepository.findAll();
+	public ResponseEntity<?> findAll() {
+		return new ResponseEntity(empresaRepository.findAll(), HttpStatus.OK);
 	}
-	
-	
+	@CrossOrigin
 	@GetMapping(value="/{id}")
 	public ResponseEntity<Empresa> findById(@PathVariable Long id){
 		
 		Empresa empresa = empresaRepository.findById(id).get();
 		return ResponseEntity.ok().body(empresa);
 	}
-	
+	@CrossOrigin
 	@PutMapping("/{id}")
 	public ResponseEntity<Empresa> atualizar(@PathVariable Long id, 
 			 @RequestBody Empresa empresa) {
@@ -62,7 +61,7 @@ public class EmpresaResource {
 		
 		return ResponseEntity.ok(existente);
 	}
-
+	@CrossOrigin
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> remover(@PathVariable Long id) {
 		Empresa empresa = empresaRepository.getById(id);
